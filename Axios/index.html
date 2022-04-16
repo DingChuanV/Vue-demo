@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--Axios-->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+<div id="app"></div>
+<div>
+    name:{{info.name}}
+</div>
+<div>
+    url: <a v-bind:href="info.url" target="_blank">{{info.url}}</a>
+</div>
+
+<ul>
+    <li v-for="item in info.linkes">
+        {{item.name}}---->{item.url}}
+    </li>
+</ul>
+</body>
+<script>
+    new Vue({
+        el: "#app",
+        /**
+         * Axios请求返回的data函数
+         * @returns {{info: {name: string, links: *[], url: string}}}
+         */
+        data() {
+            return {
+                info: {
+                    name: '',
+                    url: '',
+                    links: []
+                }
+            }
+        },
+        /**
+         * 钩子函数
+         */
+        mounted() {
+            /**
+             * 发送axios的get请求
+             */
+            axios.get('data.json').then(response => {
+                /**
+                 * 将请求来的数据赋值给info对象
+                 */
+                this.info = response.data()
+            })
+        }
+    })
+</script>
+</html>
