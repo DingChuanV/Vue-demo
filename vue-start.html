@@ -3,8 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 </head>
 <body>
-
+<!--view层-->
+<div id="app">
+    {{message}}
+</div>
 </body>
+<script>
+    /**
+     * ViewModel层
+     * @type {Vue}
+     */
+    let app = new Vue({
+        /**
+         * el element的缩写，挂载元素用的
+         */
+        el: "#app",
+        /**
+         * data相当于Model层
+         * 将view层和Model层关联
+         */
+        data: {
+            message: "hello word"
+        }
+    })
+</script>
 </html>
