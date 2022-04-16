@@ -9,9 +9,30 @@
 <body>
 <!--view层-->
 <div id="app">
-    {{message}}
+    <!--    {{message}}-->
+    <span v-bind:title="message">
+        鼠标悬停几秒钟查看此处动态绑定的提示信息！
+    </span>
+</div>
+<div id="app1">
+    <p v-if="seen">现在你看到我了</p>
 </div>
 </body>
+<div id="app2">
+    <ol>
+        <li v-for="todo in todos">
+            {{ todo.text }}
+        </li>
+    </ol>
+</div>
+<div id="app3">
+    <p>{{ message }}</p>
+    <button v-on:click="reverseMessage">反转消息</button>
+</div>
+<div id="app4">
+    <p>{{message}}</p>
+    <input v-model="message">
+</div>
 <script>
     /**
      * ViewModel层
@@ -27,7 +48,55 @@
          * 将view层和Model层关联
          */
         data: {
-            message: "hello word"
+            // message: "hello word"
+            /**
+             * 这里我们遇到了一点新东西。你看到的 v-bind attribute 被称为指令。
+             * 指令带有前缀 v-，以表示它们是 Vue 提供的特殊 attribute。
+             * 可能你已经猜到了，它们会在渲染的 DOM 上应用特殊的响应式行为。
+             * 在这里，该指令的意思是：“将这个元素节点的 title attribute 和 Vue 实例的 message property 保持一致”。
+             */
+            message: '页面加载于 ' + new Date().toLocaleString()
+
+        }
+    })
+</script>
+<script>
+    new Vue({
+        el: "#app1",
+        data: {
+            seen: true
+        }
+    })
+    new Vue({
+        el: "#app2",
+        data: {
+            todos: [{text: '学习 JavaScript'},
+                {text: '学习 Vue'},
+                {text: '整个牛项目'}]
+        }
+    })
+    new Vue({
+        el: '#app3',
+        data: {
+            message: 'Hello Vue.js!'
+        },
+        methods: {
+            reverseMessage: function () {
+                /**
+                 * 注意在 reverseMessage 方法中，
+                 * 我们更新了应用的状态，但没有触碰 DOM——所有的 DOM 操作都由 Vue 来处理，
+                 * 你编写的代码只需要关注逻辑层面即可。
+                 * @type {string}
+                 */
+                this.message = this.message.split('').reverse().join('')
+            }
+        }
+    })
+
+    new Vue({
+        el: '#app4',
+        data: {
+            message: 'Hello Vue!'
         }
     })
 </script>
