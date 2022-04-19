@@ -1,19 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>let语法</title>
-</head>
-<body>
+  </head>
+  <body>
     <script>
+      let a = 1;
+      const b = 1;
+      console.log(a);
+      console.log(b);
 
-        let a=1;
-        const b =1;
-        console.log(a)
-        console.log(b)
+      const person = {
+        name: "uin",
+        age: 18,
+        language: ["java", "Go", "javascript"],
+      };
+
+      const { naem: bearbrick, age, language } = person;
+      console.log(person);
+
+      let str = "hello.vue";
+      //以什么开始的
+      console.log(str.startsWith("hello"));
+      //以什么结束的
+      console.log(str.endsWith("vue"));
+      //包含什么样的字符
+      console.log(str.includes("e"));
+      //包含什么样的字符
+      console.log(str.includes("hello"));
+
+      //字符串模版
+      let ss = `
+            <div>
+                <span>hello word</span>
+            </div>
+            `;
+      console.log(ss);
+
+      //插值表达式
+      let info = `我是${abc},今年${age}岁了`;
+      console.log(info);
+
+      function func() {
+        return "这是一个函数";
+      }
+
+      let sss = `哈哈哈😄，${func()}`;
+
+      console.log(sss);
+
+
+      //箭头函数
+
+      
     </script>
-    
-</body>
+  </body>
 </html>
