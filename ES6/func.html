@@ -15,8 +15,43 @@
       }
       console.log(func(1, null));
 
-
       //现在可以这样写
+      function func1(a, b = 1) {
+        return a + b;
+      }
+      console.log(func1(1));
+
+      //不定参数
+      function fun2(...values) {
+        console.log(values.length);
+      }
+
+      fun2(1, 2, 3, 4);
+      fun2(1, 2, 3, 4, 5, 6);
+
+      //箭头函数
+      //   var print = function(obj){
+      //     console.log(obj)
+      //   }
+      var print = (obj) => console.log(obj);
+
+      print("hello");
+
+      //   var printed = function (a, b) {
+      //     return a + b;
+      //   };
+
+      var printed = (a, b) => a + b;
+
+      const person = {
+        name: "uin",
+        age: 18,
+        language: ["java", "go", "javascript"],
+      };
+
+      function hello(person) {
+        console.log("hello", person.name);
+      }
     </script>
   </body>
 </html>
