@@ -50,8 +50,13 @@
       };
 
       function hello(person) {
-        console.log("hello", person.name);
+        console.log("hello,"+person.name);
       }
+      hello(person)
+
+      var hello2=({name})=>console.log("hello,"+name)
+      hello2(person)
+
     </script>
   </body>
 </html>
